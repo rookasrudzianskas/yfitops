@@ -8,7 +8,7 @@ export default function Home() {
         <title>Spotify ✳️</title>
       </Head>
 
-      <main>
+      <main className="bg-black h-screen overflow-hidden">
         <Sidebar />
       </main>
 
