@@ -15,8 +15,9 @@ const refreshAccessToken = async (token) => {
         return {
             ...token,
             access_token: refreshedToken.access_token,
-            accessTokenExpires: Date.now() + refreshedToken.expires_in * 1000 // = 1 hour as 3600 returns from spotify API
-        }
+            accessTokenExpires: Date.now() + refreshedToken.expires_in * 1000, // = 1 hour as 3600 returns from spotify API
+            refreshToken: refreshedToken.refresh_token ?? token.refreshToken,
+        };
     } catch (error) {
         console.log(error);
         return {
@@ -50,12 +51,12 @@ export default NextAuth({
                     refreshToken: account.refresh_token,
                     username: account.providerAccountId,
                     accessTokenExpires: account.expires_at * 1000, // we are handling the expiry times in milliseconds Hence * 1000
-                }
+                };
             }
 
             // refresh token
             // return the last token if the access token has not expired yet
-            if(Date.now() < token.accessTokenExpires) {
+            if(Date.now() < token?.accessTokenExpires) {
                 console.log('EXISTING ACCESS TOKEN IS VALID');
                 return token;
             }
@@ -63,7 +64,6 @@ export default NextAuth({
             // access token has expired, so we need to refresh it
             console.log('EXISTING ACCESS TOKEN HAS EXPIRED< REFRESHING IT');
             return await refreshAccessToken(token);
-
         },
     },
 });
