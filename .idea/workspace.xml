@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="007b3d34-edb1-4214-ba4b-ff461dd79468" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/spotify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/api/auth/[...nextauth].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/auth/[...nextauth].js" afterDir="false" />
     </list>
@@ -44,7 +45,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638800216288</updated>
-      <workItem from="1638800226721" duration="5956000" />
+      <workItem from="1638800226721" duration="6078000" />
     </task>
     <servers />
   </component>
