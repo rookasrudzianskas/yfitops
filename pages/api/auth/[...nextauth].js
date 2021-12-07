@@ -28,6 +28,12 @@ export default NextAuth({
                     accessTokenExpires: account.expires_at * 1000, // we are handling the expiry times in milliseconds Hence * 1000
                 }
             }
-        }
-    }
+
+            // refresh token
+            // return the last token if the access token has not expired yet
+            if(Date.now() < token.accessTokenExpires) {
+                return token;
+            }
+        },
+    },
 });
