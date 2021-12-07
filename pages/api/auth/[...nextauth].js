@@ -3,6 +3,15 @@ import SpotifyProvider from "next-auth/providers/spotify";
 import {LOGIN_URL} from "../../../lib/spotify";
 import {refreshAccessToken} from "spotify-web-api-node/src/server-methods";
 
+
+const refreshAccessToken = (token) => {
+    try {
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export default NextAuth({
     // Configure one or more authentication providers
     providers: [
