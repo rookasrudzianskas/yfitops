@@ -1,4 +1,4 @@
-import {NextRequest, NextResponse} from 'next/server'
+import {NextResponse} from 'next/server'
 import { getToken } from 'next-auth/jwt';
 
 export async function middleware(req) {
@@ -19,3 +19,12 @@ export async function middleware(req) {
     }
 
 }
+
+
+// pages/_middleware.ts
+
+import { NextFetchEvent, NextRequest } from 'next/server'
+
+// export function middleware(req, ev) {
+//     return new Response('Hello, world!')
+// }
