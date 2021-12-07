@@ -4,14 +4,19 @@ import spotifyApi, {LOGIN_URL} from "../../../lib/spotify";
 import {refreshAccessToken} from "spotify-web-api-node/src/server-methods";
 
 
-const refreshAccessToken = (token) => {
+const refreshAccessToken = async (token) => {
     try {
         spotifyApi.setAccessToken(token.access_token);
         spotifyApi.setRefreshToken(token.refreshToken);
 
+        const {body: refreshedToken} = await spotifyApi.refreshAccessToken();
+        console.log('refreshedToken', refreshedToken);
 
-
-
+        return {
+            ...token,
+            access_token: refreshedToken.access_token,
+            accessTokenExpires: Date.now() + refreshedToken.expires_in * 1000 // = 1 hour as 3600 returns from spotify API
+        }
     } catch (error) {
         console.log(error);
         return {
