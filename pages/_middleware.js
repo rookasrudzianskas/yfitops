@@ -19,12 +19,3 @@ export async function middleware(req) {
     }
 
 }
-
-
-// pages/_middleware.ts
-
-import { NextFetchEvent, NextRequest } from 'next/server'
-
-// export function middleware(req, ev) {
-//     return new Response('Hello, world!')
-// }
