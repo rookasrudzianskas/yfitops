@@ -6,7 +6,7 @@ import {refreshAccessToken} from "spotify-web-api-node/src/server-methods";
 
 const refreshAccessToken = async (token) => {
     try {
-        spotifyApi.setAccessToken(token.access_token);
+        spotifyApi.setAccessToken(token.accessToken);
         spotifyApi.setRefreshToken(token.refreshToken);
 
         const {body: refreshedToken} = await spotifyApi.refreshAccessToken();
