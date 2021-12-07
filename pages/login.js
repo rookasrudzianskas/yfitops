@@ -1,5 +1,5 @@
 import React from 'react';
-import {getProviders} from "next-auth/react";
+import {getProviders, signIn} from "next-auth/react";
 
 const Login = ({providers}) => {
     return (
@@ -7,7 +7,7 @@ const Login = ({providers}) => {
             <img src="https://links.papareact.com/9xl" className="w-52 mb-5" alt=""/>
             {Object.values(providers).map((provider, index) => (
                 <div key={provider.name} >
-                    <button className="bg-[#18D860] text-white p-5 rounded-lg">Login with {provider.name}</button>
+                    <button onClick={() => signIn(provider.id, {callbackUrl: '/'})} className="bg-[#18D860] text-white p-5 rounded-lg font-bold">Login with {provider.name}</button>
                 </div>
             ))}
         </div>
