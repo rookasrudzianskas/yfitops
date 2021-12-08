@@ -9,7 +9,9 @@ export async function middleware(req) {
     // if the user is logged in, add the token to the request
     // if the token is, I let you to go
     if(pathname.includes('/api/auth') || token) {
+        console.log(pathname);
         console.log('This really works 🚀');
+        console.log(NextResponse.next());
         return NextResponse.next();
     }
 
