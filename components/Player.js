@@ -5,6 +5,7 @@ import {useRecoilState} from "recoil";
 import {currentTrackIdState, isPlayingState} from "../atoms/songAtom";
 import useSongInfo from "../hooks/useSongInfo";
 import {RewindIcon, SwitchHorizontalIcon} from "@heroicons/react/solid";
+import {VolumeUpIcon as VolumeDownIcon, HeartIcon} from "@heroicons/react/outline";
 
 const Player = () => {
 
