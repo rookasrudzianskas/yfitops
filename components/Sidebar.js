@@ -68,7 +68,7 @@ const Sidebar = () => {
 
 
                 {playlists.map((playlist) => (
-                    <div onClick={() => setPlaylistId(playlist.id)} className="flex items-center space-x-2 hover:text-white" key={playlist.id}>
+                    <div onClick={() => setPlaylistId(playlist.id)} className="flex items-center space-x-2 hover:text-white cursor-pointer" key={playlist.id}>
                         <p>{playlist.name}</p>
                     </div>
                 ))}
