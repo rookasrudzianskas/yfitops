@@ -29,8 +29,10 @@ const Center = () => {
     }, [playlistId]);
 
     useEffect(() => {
-
-    }, [spotifyApi]);
+        spotifyApi.getPlaylist(playlistId).then((data) => {
+            setPlaylist(data.body);
+        });
+    }, [spotifyApi, playlistId]);
 
     return (
         <div className="flex-grow">
