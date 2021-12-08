@@ -8,17 +8,19 @@ import useSpotify from "../hooks/useSpotify";
 const Sidebar = () => {
     const spotifyApi = useSpotify();
     const {data: session} = useSession();
-    const [playlist, setPlaylist] = useState([]);
+    const [playlists, setPlaylists] = useState([]);
     const [playlistId, setPlaylistId] = useState(null);
 
 
     useEffect(() => {
         if(spotifyApi.getAccessToken()) {
             spotifyApi.getUserPlaylists().then((data) => {
-                setPlaylist(data.body.items);
+                setPlaylists(data.body.items);
             });
         }
     }, [session, spotifyApi]);
+
+    console.log('You have pcied playlist', playlistId);
     // console.log(playlist);
     // console.log(session)
 
@@ -65,8 +67,8 @@ const Sidebar = () => {
             {/*    playlist */}
 
 
-                {playlist.map((playlist) => (
-                    <div className="flex items-center space-x-2 hover:text-white" key={playlist.id}>
+                {playlists.map((playlist) => (
+                    <div onClick={() => setPlaylistId(playlist.id)} className="flex items-center space-x-2 hover:text-white" key={playlist.id}>
                         <p>{playlist.name}</p>
                     </div>
                 ))}
