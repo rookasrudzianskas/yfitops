@@ -4,7 +4,14 @@ import {useSession} from "next-auth/react";
 import {useRecoilState} from "recoil";
 import {currentTrackIdState, isPlayingState} from "../atoms/songAtom";
 import useSongInfo from "../hooks/useSongInfo";
-import {FastForwardIcon, PauseIcon, PlayIcon, RewindIcon, SwitchHorizontalIcon} from "@heroicons/react/solid";
+import {
+    FastForwardIcon,
+    PauseIcon,
+    PlayIcon,
+    ReplyIcon,
+    RewindIcon,
+    SwitchHorizontalIcon
+} from "@heroicons/react/solid";
 import {VolumeUpIcon as VolumeDownIcon, HeartIcon} from "@heroicons/react/outline";
 
 const Player = () => {
@@ -38,7 +45,15 @@ const Player = () => {
     }, [currentTrackId, spotifyApi, session]);
 
     const handlePlayPause = () => {
-
+        spotifyApi.getMyCurrentPlaybackState().then((data) => {
+            if(data?.body?.is_playing) {
+                spotifyApi.pause();
+                setIsPlaying(false);
+            } else {
+                spotifyApi.play();
+                setIsPlaying(true);
+            }
+        })
     }
 
 
@@ -69,6 +84,8 @@ const Player = () => {
                 <FastForwardIcon
                     // onClick={() => spotifyApi.skipToPrevious()} does not work
                     className="button" />
+
+                <ReplyIcon className="button" />
             </div>
         </div>
     );
