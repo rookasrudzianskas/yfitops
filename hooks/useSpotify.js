@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {signIn, useSession} from "next-auth/react";
-import spotifyApi from "../lib/spotify";
 import SpotifyWebApi from "spotify-web-api-node";
 
 const spotifyApi = new SpotifyWebApi({
