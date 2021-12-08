@@ -20,7 +20,6 @@ const Sidebar = () => {
         }
     }, [session, spotifyApi]);
 
-    console.log('You have pcied playlist', playlistId);
     // console.log(playlist);
     // console.log(session)
 
