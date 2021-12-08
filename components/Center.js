@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useSession} from "next-auth/react";
+import {signOut, useSession} from "next-auth/react";
 import {ChevronDownIcon} from "@heroicons/react/outline";
 import {shuffle} from "lodash";
 import {useRecoilState} from "recoil";
@@ -44,7 +44,7 @@ const Center = () => {
     return (
         <div className="flex-grow overflow-y-scroll scrollbar-hide h-screen">
             <header className="absolute top-5 right-8">
-                <div className="flex items-center bg-black space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2">
+                <div onClick={() => signOut()} className="flex items-center bg-black space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2">
                     <img className="rounded-full w-10 h-10" src={session?.user?.image || 'https://pbs.twimg.com/profile_images/1350895249678348292/RS1Aa0iK_400x400.jpg'} alt=""/>
                     <h2 className="text-white">{session?.user?.name}</h2>
                     <ChevronDownIcon className="h-5 w-5" />
