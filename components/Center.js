@@ -36,6 +36,8 @@ const Center = () => {
         });
     }, [spotifyApi, playlistId]);
 
+    // console.log('🔥 this is playlist >>>', playlist);
+
     return (
         <div className="flex-grow">
             <header className="absolute top-5 right-8">
@@ -47,7 +49,11 @@ const Center = () => {
             </header>
 
             <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white p-8`}>
-                {/*<img src={} alt=""/>*/}
+                <img src={playlist?.images?.[0]?.url} className="h-44 w-44 shadow-2xl" alt=""/>
+                <div>
+                    <p>PLAYLIST</p>
+                    <h1 className="text-2xl md:text-3xl xl:text-5xl font-bold">{playlist?.name}</h1>
+                </div>
             </section>
         </div>
     );
