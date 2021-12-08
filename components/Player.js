@@ -12,7 +12,7 @@ import {
     RewindIcon,
     SwitchHorizontalIcon
 } from "@heroicons/react/solid";
-import {VolumeUpIcon as VolumeDownIcon, HeartIcon} from "@heroicons/react/outline";
+import {VolumeUpIcon as VolumeDownIcon, HeartIcon, VolumeUpIcon} from "@heroicons/react/outline";
 
 const Player = () => {
 
@@ -86,6 +86,12 @@ const Player = () => {
                     className="button" />
 
                 <ReplyIcon className="button" />
+            </div>
+
+            <div className="flex items-center space-x-3 md:space-x-4 justify-end pr-5" >
+                <VolumeDownIcon className="button" />
+                <input className="w-14 md:w-28" type="range" min={0} max={100}/>
+                <VolumeUpIcon className="button" />
             </div>
         </div>
     );
