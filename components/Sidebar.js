@@ -3,13 +3,15 @@ import {HeartIcon, HomeIcon, LibraryIcon, RssIcon, SearchIcon} from '@heroicons/
 import {PlusCircleIcon} from "@heroicons/react/outline";
 import {signOut, useSession} from "next-auth/react";
 import useSpotify from "../hooks/useSpotify";
+import {useRecoilState} from "recoil";
+import {playlistIdState} from "../atoms/playlistAtom";
 
 
 const Sidebar = () => {
     const spotifyApi = useSpotify();
     const {data: session} = useSession();
     const [playlists, setPlaylists] = useState([]);
-    const [playlistId, setPlaylistId] = useState(null);
+    const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
 
     useEffect(() => {
@@ -19,6 +21,7 @@ const Sidebar = () => {
             });
         }
     }, [session, spotifyApi]);
+    // console.log(playlistId);
 
     // console.log(playlist);
     // console.log(session)
