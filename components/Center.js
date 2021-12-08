@@ -30,11 +30,13 @@ const Center = () => {
     }, [playlistId]);
 
     useEffect(() => {
-        spotifyApi.getPlaylist(playlistId).then((data) => {
-            setPlaylist(data.body);
-        }).catch((err) => {
-            console.error(err);
-        });
+        if(spotifyApi.getAccessToken()) {
+            spotifyApi.getPlaylist(playlistId).then((data) => {
+                setPlaylist(data.body);
+            }).catch((err) => {
+                console.error(err);
+            });
+        }
     }, [spotifyApi, playlistId]);
 
     // console.log('🔥 this is playlist >>>', playlist);
@@ -50,7 +52,7 @@ const Center = () => {
             </header>
 
             <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white p-8`}>
-                <img src={playlist?.images?.[0]?.url} className="h-44 w-44 shadow-2xl" alt=""/>
+                <img src={playlist?.images?.[0]?.url || "https://techwafer.com/wp-content/uploads/2017/08/web-page-loading.jpeg"} className="h-44 w-44 shadow-2xl" alt=""/>
                 <div>
                     <p>PLAYLIST</p>
                     <h1 className="text-2xl md:text-3xl xl:text-5xl font-bold">{playlist?.name}</h1>
