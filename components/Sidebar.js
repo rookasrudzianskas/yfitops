@@ -13,8 +13,8 @@ const Sidebar = () => {
 
     useEffect(() => {
         if(spotifyApi.getAccessToken()) {
-            spotifyApi.getUserPlaylists().then(res => {
-                setPlaylist(res.items);
+            spotifyApi.getUserPlaylists().then((data) => {
+                setPlaylist(data?.items);
             });
         }
     }, [session, spotifyApi]);
