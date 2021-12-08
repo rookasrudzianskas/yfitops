@@ -1,10 +1,14 @@
 import React from 'react';
 import useSpotify from "../hooks/useSpotify";
 import {millisToMinutesAndSeconds} from "../lib/time";
+import {useRecoilState} from "recoil";
+import {currentTrackIdState, isPlayingState} from "../atoms/songAtom";
 
 const Song = ({order, track}) => {
 
     const spotifyApi = useSpotify();
+    const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState);
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
 
     return (
         <div className="grid grid-cols-2 text-gray-500 py-4 px-5 hover:bg-gray-900 rounded-lg cursor-pointer">
