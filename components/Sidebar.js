@@ -14,10 +14,11 @@ const Sidebar = () => {
     useEffect(() => {
         if(spotifyApi.getAccessToken()) {
             spotifyApi.getUserPlaylists().then((data) => {
-                setPlaylist(data?.items);
+                setPlaylist(data.body.items);
             });
         }
     }, [session, spotifyApi]);
+    // console.log(playlist);
     // console.log(session)
 
     return (
@@ -62,6 +63,12 @@ const Sidebar = () => {
 
             {/*    playlist */}
 
+
+                {playlist.map((playlist) => (
+                    <div className="flex items-center space-x-2 hover:text-white" key={playlist.id}>
+                        <p>{playlist.name}</p>
+                    </div>
+                ))}
 
             </div>
         </div>
