@@ -4,7 +4,7 @@ import {useSession} from "next-auth/react";
 import {useRecoilState} from "recoil";
 import {currentTrackIdState, isPlayingState} from "../atoms/songAtom";
 import useSongInfo from "../hooks/useSongInfo";
-import {SwitchHorizontalIcon} from "@heroicons/react/solid";
+import {RewindIcon, SwitchHorizontalIcon} from "@heroicons/react/solid";
 
 const Player = () => {
 
@@ -52,7 +52,9 @@ const Player = () => {
 
             <div>
                 <SwitchHorizontalIcon className="button" />
-                <SwitchHorizontalIcon className="button" />
+                <RewindIcon
+                    // onClick={() => spotifyApi.skipToPrevious()}
+                    className="button" />
                 <SwitchHorizontalIcon className="button" />
                 <SwitchHorizontalIcon className="button" />
             </div>
