@@ -4,6 +4,7 @@ import {ChevronDownIcon} from "@heroicons/react/outline";
 import {shuffle} from "lodash";
 import {useRecoilState} from "recoil";
 import {playlistIdState, playlistState} from "../atoms/playlistAtom";
+import useSpotify from "../hooks/useSpotify";
 
 const colors = [
     'from-indigo-500',
@@ -21,10 +22,15 @@ const Center = () => {
     const [color, setColor] = useState(null);
     const [playlistId] = useRecoilState(playlistIdState);
     const [playlist, setPlaylist] = useRecoilState(playlistState);
+    const spotifyApi = useSpotify();
 
     useEffect(() => {
         setColor(shuffle(colors).pop());
     }, [playlistId]);
+
+    useEffect(() => {
+
+    }, [spotifyApi]);
 
     return (
         <div className="flex-grow">
