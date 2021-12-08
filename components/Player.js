@@ -4,7 +4,7 @@ import {useSession} from "next-auth/react";
 import {useRecoilState} from "recoil";
 import {currentTrackIdState, isPlayingState} from "../atoms/songAtom";
 import useSongInfo from "../hooks/useSongInfo";
-import {PauseIcon, PlayIcon, RewindIcon, SwitchHorizontalIcon} from "@heroicons/react/solid";
+import {FastForwardIcon, PauseIcon, PlayIcon, RewindIcon, SwitchHorizontalIcon} from "@heroicons/react/solid";
 import {VolumeUpIcon as VolumeDownIcon, HeartIcon} from "@heroicons/react/outline";
 
 const Player = () => {
@@ -55,7 +55,7 @@ const Player = () => {
 
         {/*     center  */}
 
-            <div>
+            <div className="flex items-center justify-evenly">
                 <SwitchHorizontalIcon className="button" />
                 <RewindIcon
                     // onClick={() => spotifyApi.skipToPrevious()} does not work
@@ -65,6 +65,10 @@ const Player = () => {
                 ) : (
                     <PlayIcon onClick={handlePlayPause} className="button w-10 h-10" />
                 )}
+
+                <FastForwardIcon
+                    // onClick={() => spotifyApi.skipToPrevious()} does not work
+                    className="button" />
             </div>
         </div>
     );
