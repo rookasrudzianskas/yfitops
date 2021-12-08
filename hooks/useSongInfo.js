@@ -19,12 +19,13 @@ const useSongInfo = () => {
                             Authorization: `Bearer ${spotifyApi.getAccessToken()}`
                         }
                     }
-                );
+                ).then(res => res.json());
+                setSongInfo(trackInfo);
             }
         }
 
         fetchSongInfo();
-    }, []);
+    }, [currentIdTrack, spotifyApi]);
 
     return (
         <div>
