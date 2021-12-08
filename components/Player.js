@@ -16,9 +16,9 @@ const Player = () => {
 
     const fetchCurrentSong = () => {
         if(!songInfo) {
-            spotifyApi.getMyCurrentPlayingTrack().then(data => {
-                setCurrentTrackId(data?.body?.item?.id);
+            spotifyApi.getMyCurrentPlayingTrack().then((data) => {
                 console.log(`Now playing: ${data?.body?.item}`);
+                setCurrentTrackId(data?.body?.item?.id);
 
                 spotifyApi.getMyCurrentPlaybackState().then(data => {
                     setIsPlaying(data?.body?.is_playing);
@@ -31,6 +31,7 @@ const Player = () => {
         if(spotifyApi.getAccessToken() && !currentTrackId) {
             // fetch the song ingo
             fetchCurrentSong();
+            setVolume(50);
         }
     }, [currentTrackId, spotifyApi, session]);
 
