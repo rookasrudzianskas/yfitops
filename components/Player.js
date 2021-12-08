@@ -53,7 +53,7 @@ const Player = () => {
             <div>
                 <SwitchHorizontalIcon className="button" />
                 <RewindIcon
-                    // onClick={() => spotifyApi.skipToPrevious()}
+                    // onClick={() => spotifyApi.skipToPrevious()} does not work
                     className="button" />
                 <SwitchHorizontalIcon className="button" />
                 <SwitchHorizontalIcon className="button" />
