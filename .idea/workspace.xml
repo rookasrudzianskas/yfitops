@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="007b3d34-edb1-4214-ba4b-ff461dd79468" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useSpotify.js" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useSpotify.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +44,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638800216288</updated>
-      <workItem from="1638800226721" duration="17809000" />
+      <workItem from="1638800226721" duration="17824000" />
     </task>
     <servers />
   </component>
