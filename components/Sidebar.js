@@ -1,11 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {HeartIcon, HomeIcon, LibraryIcon, RssIcon, SearchIcon} from '@heroicons/react/outline';
 import {PlusCircleIcon} from "@heroicons/react/outline";
 import {signOut, useSession} from "next-auth/react";
+import useSpotify from "../hooks/useSpotify";
 
 
 const Sidebar = () => {
+    const spotifyApi = useSpotify();
     const {data: session} = useSession();
+    const [playlist, setPlaylist] = useState([]);
+
+
+    useEffect(() => {
+        if(spotifyApi.getAccessToken()) {
+            spotifyApi.getUserPlaylists().then(res => {
+                setPlaylist(res.items);
+            });
+        }
+    }, [session, spotifyApi]);
     // console.log(session)
 
     return (
@@ -50,38 +62,6 @@ const Sidebar = () => {
 
             {/*    playlist */}
 
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
-                <p className="cursor-pointer hover:text-white">Playlist name</p>
 
             </div>
         </div>
