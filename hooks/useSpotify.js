@@ -16,7 +16,7 @@ const useSpotify = () => {
 
         }
     }, [session]);
-    return null;
+    return spotifyApi;
 };
 
 export default useSpotify;
