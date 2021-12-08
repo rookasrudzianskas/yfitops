@@ -53,7 +53,7 @@ const Player = () => {
                 spotifyApi.play();
                 setIsPlaying(true);
             }
-        })
+        });
     }
 
 
