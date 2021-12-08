@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import useSpotify from "../hooks/useSpotify";
 import {useSession} from "next-auth/react";
 import {useRecoilState} from "recoil";
@@ -13,6 +13,7 @@ import {
     SwitchHorizontalIcon
 } from "@heroicons/react/solid";
 import {VolumeUpIcon as VolumeDownIcon, HeartIcon, VolumeUpIcon} from "@heroicons/react/outline";
+import {debounce} from "lodash";
 
 const Player = () => {
 
@@ -43,6 +44,19 @@ const Player = () => {
             setVolume(50);
         }
     }, [currentTrackId, spotifyApi, session]);
+
+    useEffect(() => {
+        if(volume > 0 && volume < 100) {
+            debouncedAdjustVolume(volume);
+        }
+    }, [volume]);
+
+    const debouncedAdjustVolume = useCallback(
+        debounce((volume) => {
+            spotifyApi.setVolume(volume)
+        }, 500),
+        [],
+    );
 
     const handlePlayPause = () => {
         spotifyApi.getMyCurrentPlaybackState().then((data) => {
@@ -91,7 +105,7 @@ const Player = () => {
             <div className="flex items-center space-x-3 md:space-x-4 justify-end pr-5" >
                 <VolumeDownIcon className="button" onClick={() => volume > 0 && setVolume(volume - 10)} />
                 <input className="w-14 md:w-28" value={volume} onChange={(e) => setVolume(Number(e.target.value))} type="range" min={0} max={100}/>
-                <VolumeUpIcon className="button" onClick={() => volume > 100 && setVolume(volume + 10)} />
+                <VolumeUpIcon className="button" onClick={() => volume < 100 && setVolume(volume + 10)} />
             </div>
         </div>
     );
